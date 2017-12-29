@@ -2,7 +2,7 @@ FROM alpine:3.3
 MAINTAINER Nan Wang - Cloud / SAP // Thanks to Alex Bordei - Bigstep Inc., Simen Huuse - NTT Data
 LABEL Nan Wang - Cloud / SAP // Thanks to Alex Bordei - Bigstep Inc., Simen Huuse - NTT Data
 
-run apk add --update darkhttpd && rm -rf /var/cache/apk/*
+RUN apk add --update darkhttpd && rm -rf /var/cache/apk/*
 
 ADD index.html /var/www/localhost/htdocs/index.html
 ADD entrypoint.sh /entrypoint.sh
