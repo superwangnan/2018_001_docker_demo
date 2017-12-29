@@ -10,6 +10,7 @@ ADD sapcloudplatform.png /var/www/localhost/htdocs/sapcloudplatform.png
 ADD nttdata.png /var/www/localhost/htdocs/nttdata.png
 ADD git.gif /var/www/localhost/htdocs/git.gif
 ADD docker.jpg /var/www/localhost/htdocs/docker.jpg
+ADD architecture.png /var/www/localhost/htdocs/architecture.png
 
 EXPOSE 80
 
