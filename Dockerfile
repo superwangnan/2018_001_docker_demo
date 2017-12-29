@@ -1,6 +1,6 @@
 FROM alpine:3.3
-MAINTAINER Simen Huuse - itelligence / NTT Data // Thanks to Alex Bordei - Bigstep Inc.
-LABEL Simen Huuse - itelligence / NTT Data // Thanks to Alex Bordei - Bigstep Inc.
+MAINTAINER Nan Wang - Cloud / SAP // Thanks to Alex Bordei - Bigstep Inc., Simen Huuse - NTT Data
+LABEL Nan Wang - Cloud / SAP // Thanks to Alex Bordei - Bigstep Inc., Simen Huuse - NTT Data
 
 run apk add --update darkhttpd && rm -rf /var/cache/apk/*
 
