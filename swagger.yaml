@@ -1,0 +1,157 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Account Query & Payment Order
+  description: Account Query & Payment Order
+  termsOfService: ''
+  contact:
+    name: API Team
+host: sunkistfish-eval-test.apigee.net
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+produces:
+  - application/json
+securityDefinitions:
+  APIKeyQueryParam:
+    type: apiKey
+    in: query
+    name: apikey
+paths:
+  /v1/customer/acctsumminq:
+    get:
+      tags:
+        - Customer
+      description: 存款帳號查詢
+      parameters:
+        - name: CustID
+          in: query
+          required: true
+          type: string
+          maxLength: 11
+      security:
+        - APIKeyQueryParam: []
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: array
+            items:
+              type: string
+              example:
+                - 09310100000
+                - 09310100001
+        '401':
+          description: Authorization information is missing or invalid.
+        '404':
+          description: Account not found.
+  /v1/customer/availbalsumminq:
+    get:
+      tags:
+        - Customer
+      description: 帳戶餘額查詢
+      parameters:
+        - name: CustID
+          in: query
+          required: true
+          type: string
+          maxLength: 11
+        - name: AcctNo
+          in: query
+          required: true
+          type: string
+          maxLength: 11
+      security:
+        - APIKeyQueryParam: []
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              AcctNo:
+                type: string
+                example: 09310100000
+              TxDate:
+                type: string
+                example: '1070103'
+              TxTime:
+                type: string
+                example: '100410'
+              Sign:
+                type: string
+                example: +
+              Amt:
+                type: string
+                example: '214413'
+        '401':
+          description: Authorization information is missing or invalid.
+        '404':
+          description: Account not found.
+  /v1/payment/fundxferadd:
+    post:
+      tags:
+        - Payment
+      description: 即時扣款交易
+      parameters:
+        - name: PayerBank
+          in: formData
+          required: true
+          type: string
+        - name: PayerAcctNo
+          in: formData
+          required: true
+          type: string
+        - name: PayerID
+          in: formData
+          required: true
+          type: string
+        - name: Amt
+          in: formData
+          required: true
+          type: string
+        - name: PmtDate
+          in: formData
+          required: true
+          type: string
+      security:
+        - APIKeyQueryParam: []
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              PayerBank:
+                type: string
+                example: '00700000'
+              PayerAcctNo:
+                type: string
+                example: 09310100000
+              PayerID:
+                type: string
+                example: A0000010000
+              TxDate:
+                type: string
+                example: '1070103'
+              TxTime:
+                type: string
+                example: '112314'
+              AvlSign:
+                type: string
+                example: +
+              AvlAmt:
+                type: string
+                example: '212118'
+              Amt:
+                type: string
+                example: '2295'
+              PrmDate:
+                type: string
+                example: '1070103'
+        '401':
+          description: Authorization information is missing or invalid.
